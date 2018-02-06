@@ -1,0 +1,13 @@
+<h1>This is the end of Week 3's Homework</h1>
+
+<%= link_to "Create New Blog", new_blog_path %>
+
+<% @blogs.each do |item| %>
+  <p><%= link_to item.title, blog_path(item)%></p>
+  <p><%= item.date%></p>
+  <p><%= item.body%></p>
+
+  <%= link_to "Edit Blog", edit_blog_path(item)%>
+
+  <td><%= link_to 'Delete Blog', blog_path(item), method: :delete, data: {confirm: 'Are you sure you want to delete this Blog?'} %></td>
+<% end %>
