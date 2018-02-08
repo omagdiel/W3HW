@@ -1,5 +1,8 @@
 class BlogsController < ApplicationController
+
+  # before_action is used to set permissions on what is allowed to prevent someone hijacking site.
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+
   def index
     @blogs = Blog.all
   end
