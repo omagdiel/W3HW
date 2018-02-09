@@ -3,6 +3,8 @@ class BlogsController < ApplicationController
   # before_action is used to set permissions on what is allowed to prevent someone hijacking site.
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, admin: :all
+
   def index
     @blogs = Blog.all
   end
@@ -23,7 +25,6 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: 'Your Blog was successfully created.' }
-
       else
         format.html { render :new }
       end

@@ -7,7 +7,7 @@
   <p><%= item.date%></p>
   <p><%= item.body%></p>
 
-  <%= link_to "Edit Blog", edit_blog_path(item)%>
+  <%= link_to "Edit Blog", edit_blog_path(item) if logged_in?(:admin) %>
 
-  <td><%= link_to 'Delete Blog', blog_path(item), method: :delete, data: {confirm: 'Are you sure you want to delete this Blog?'} %></td>
+  <td><%= link_to 'Delete Blog', blog_path(item), method: :delete, data: {confirm: 'Are you sure you want to delete this Blog?'} if logged_in?(:admin) %></td>
 <% end %>
